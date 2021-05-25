@@ -1,0 +1,20 @@
+include:
+  - project: hs-karlsruhe/ci-templates
+    ref: master
+    file: lint.gitlab-ci.yml
+  - project: hs-karlsruhe/ci-templates
+    ref: master
+    file: python.gitlab-ci.yml
+  - project: hs-karlsruhe/ci-templates
+    ref: master
+    file: pages.gitlab-ci.yml
+
+stages:
+  - init
+  - test
+  - build
+  - deploy
+
+variables:
+  # example: PYTHON_VERSION: "3.8"
+  PYTHON_VERSION: "3.9"
