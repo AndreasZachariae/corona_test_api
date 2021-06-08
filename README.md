@@ -38,15 +38,21 @@ API for recording Corona test results and providing a statistic.
 ## Webservice
 
     pipenv shell
-    $env:FLASK_APP = ".\corona_test_api\corona_test_api.py"
+    $env:FLASK_APP = ".\corona_test_api\corona_test_api.py" #Powershell
+    export FLASK_APP=corona_test_api/corona_test_api.py #GitBash
     flask run
     curl http://127.0.0.1:5000/
 
 ## Docs
+
     pipenv install --dev sphinx
+    pipenv install --dev sphinx_rtd_theme
+
     cd ./docs
     sphinx-quickstart
-    pipenv install --dev sphinx_rtd_theme
-    conf-py -> html_theme: sphinx_rtd_theme
-    conf.py -> extensions: "sphinx.ext.autodoc"
+
+conf.py -> html_theme: sphinx_rtd_theme
+
+conf.py -> extensions: "sphinx.ext.autodoc"
+
     sphinx-build . _build
