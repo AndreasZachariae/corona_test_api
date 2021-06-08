@@ -4,11 +4,18 @@ verify_ssl = true
 name = "pypi"
 
 [packages]
+flask = "*"
+apispec = {extras = ["yaml"], version = "*"}
+apispec-webframeworks = "*"
+marshmallow = "*"
+pyyaml = "*"
 
 [dev-packages]
 pytest = "*"
 pytest-cov = "*"
 pylint = "*"
+sphinx = "*"
+sphinx-rtd-theme = "*"
 
 [requires]
 python_version = "3.9"
