@@ -1,9 +1,9 @@
 # corona_test_api
-[![coverage](https://gitlab.com/hs-karlsruhe/ss2021/zaan1018/corona_test_api/badges/main/coverage.svg)](https://hs-karlsruhe.gitlab.io/ss2021/zaan1018/corona_test_api/test/)
-[![markdownlint](https://hs-karlsruhe.gitlab.io/ss2021/zaan1018/corona_test_api/badges/main/markdownlint.svg)](https://gitlab.com/hs-karlsruhe/ss2021/zaan1018/corona_test_api/commits/master)
-[![yamllint](https://hs-karlsruhe.gitlab.io/ss2021/zaan1018/corona_test_api/badges/main/yamllint.svg)](https://gitlab.com/hs-karlsruhe/ss2021/zaan1018/corona_test_api/commits/master)
+[![coverage](https://gitlab.com/hs-karlsruhe/ss2021/zaan1018/corona_test_api/badges/master/coverage.svg)](https://hs-karlsruhe.gitlab.io/ss2021/zaan1018/corona_test_api/test/)
+[![markdownlint](https://hs-karlsruhe.gitlab.io/ss2021/zaan1018/corona_test_api/badges/markdownlint.svg)](https://gitlab.com/hs-karlsruhe/ss2021/zaan1018/corona_test_api/commits/master)
+[![yamllint](https://hs-karlsruhe.gitlab.io/ss2021/zaan1018/corona_test_api/badges/yamllint.svg)](https://gitlab.com/hs-karlsruhe/ss2021/zaan1018/corona_test_api/commits/master)
 [![pylint](https://hs-karlsruhe.gitlab.io/ss2021/zaan1018/corona_test_api/badges/pylint.svg)](https://hs-karlsruhe.gitlab.io/ss2021/zaan1018/corona_test_api/lint/)
-[![dockerlint](https://hs-karlsruhe.gitlab.io/ss2021/zaan1018/corona_test_api/badges/main/dockerlint.svg)](https://gitlab.com/hs-karlsruhe/ss2021/zaan1018/corona_test_api/commits/master)
+[![dockerlint](https://hs-karlsruhe.gitlab.io/ss2021/zaan1018/corona_test_api/badges/dockerlint.svg)](https://gitlab.com/hs-karlsruhe/ss2021/zaan1018/corona_test_api/commits/master)
 
 API for recording Corona test results and providing a statistic.
 
@@ -31,9 +31,9 @@ API for recording Corona test results and providing a statistic.
 
 ## Linting and Testing
 
-    pylint hello_gitlab
+    pylint corona_test_api
     pytest
-    pytest --cov hello_gitlab
+    pytest --cov corona_test_api
 
 ## Webservice
 
@@ -41,3 +41,12 @@ API for recording Corona test results and providing a statistic.
     $env:FLASK_APP = ".\corona_test_api\corona_test_api.py"
     flask run
     curl http://127.0.0.1:5000/
+
+## Docs
+    pipenv install --dev sphinx
+    cd ./docs
+    sphinx-quickstart
+    pipenv install --dev sphinx_rtd_theme
+    conf-py -> html_theme: sphinx_rtd_theme
+    conf.py -> extensions: "sphinx.ext.autodoc"
+    sphinx-build . _build
