@@ -40,8 +40,13 @@ API for recording Corona test results and providing a statistic.
     pipenv shell
     $env:FLASK_APP = ".\corona_test_api\corona_test_api.py" #Powershell
     export FLASK_APP=corona_test_api/corona_test_api.py #GitBash
+    export FLASK_ENV=development
     flask run
     curl http://127.0.0.1:5000/
+
+    curl http://127.0.0.1:5000/testresult?id=1&positive=0
+
+    curl http://127.0.0.1:5000/statistics
 
 ## Docs
 
