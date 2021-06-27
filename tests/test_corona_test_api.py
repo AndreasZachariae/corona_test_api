@@ -1,32 +1,22 @@
-from corona_test_api.corona_test_api import app
 import json
+from corona_test_api.corona_test_api import app
 
-def test_hello_world():
+
+def test_get_testresult():
     with app.test_client() as test_app:
-        response = test_app.get("/")
-        assert 200 == response.status_code
+        response = test_app.get("/testresult?id=1&positive=1")
+        assert response.status_code == 200
 
-        json_object = json.loads(response.data.decode())
-        assert json_object == {"response": "Hello World!"}
 
-def test_sum():
+def test_get_statistics():
     with app.test_client() as test_app:
-        response = test_app.get("/sum/1/30")
-        assert 200 == response.status_code
-        assert 31 == int(response.data.decode())
-
-def test_json_response():
-    with app.test_client() as test_app:
-        response = test_app.get("/json")
-        assert 200 == response.status_code
+        response = test_app.get("/statistics")
+        assert response.status_code == 200
 
         json_object = json.loads(response.data.decode())
         assert json_object == {
-            'key': 'value',
-            "list": [1,2,3]
+            'numberOfTests': 1,
+            "numberOfNegativeTests": 0,
+            "numberOfPositiveTests": 1,
+            "numberOfUniquePersons": 1
         }
-
-def test_give_input():
-    with app.test_client() as test_app:
-        response = test_app.get("/input?parameter1=blabla")
-        assert 200 == response.status_code
