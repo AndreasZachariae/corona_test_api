@@ -63,6 +63,15 @@ statistics = Statistics()
 
 @app.route("/testresult")
 def get_testresult():
+    """Add new test result with GET-method
+
+    Parameters are in the query string
+        * id (string)
+        * positive (bool)
+
+    Returns:
+        int: response_code
+    """
     test_id = request.args.get('id', type=str)
 
     positive = request.args.get('positive', type=bool)
@@ -76,11 +85,16 @@ def get_testresult():
     statistics.add_test(test_id, positive)
 
     # response code 201 created?
-    return "new test registered" + str(test_id)+str(positive)
+    return ("new test registered" + str(test_id)+str(positive), 200)
 
 
 @app.route("/statistics")
 def get_statistics():
+    """GET-method to recieve statistics data about all tests
+
+    Returns:
+        json: statistics
+    """
     return (statistics.get_statistics(), 200)
 
 
