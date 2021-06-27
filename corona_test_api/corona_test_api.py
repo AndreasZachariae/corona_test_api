@@ -11,6 +11,7 @@ from apispec.ext.marshmallow import MarshmallowPlugin
 from apispec_webframeworks.flask import FlaskPlugin
 from marshmallow import Schema, fields
 from flask import Flask, abort, request
+from flask_cors import CORS  # neccessary for swagger editor to work
 from corona_test_api.statistics import Statistics
 
 
@@ -58,7 +59,11 @@ spec.components.schema("Statistics", schema=StatisticsShema)
 
 app = Flask(__name__)
 
+cors = CORS(app)
+
 statistics = Statistics()
+
+# standard route "/" für home?
 
 
 @app.route("/testresult")

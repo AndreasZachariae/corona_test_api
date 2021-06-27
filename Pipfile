@@ -9,6 +9,7 @@ apispec = {extras = ["yaml"], version = "*"}
 apispec-webframeworks = "*"
 marshmallow = "*"
 pyyaml = "*"
+flask-cors = "*"
 
 [dev-packages]
 pytest = "*"

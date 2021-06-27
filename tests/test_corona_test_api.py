@@ -13,6 +13,8 @@ def test_get_testresult():
         response = test_app.get("/testresult?id=1&positive=1")
         assert response.status_code == 200
 
+    # Add error code 400 test case
+
 
 def test_get_statistics():
     """Tests for correct statistics after adding the example test before
