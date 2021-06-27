@@ -1,0 +1,23 @@
+---
+
+workflow:
+  rules:
+    - if: $CI_COMMIT_TAG
+    - if: $CI_COMMIT_BRANCH
+
+stages:
+  - deploy
+
+pages:
+  stage: deploy
+  image: alpine:latest
+  interruptible: true
+  script:
+    - echo
+  artifacts:
+    paths:
+      - public
+  when: always
+  only:
+    refs:
+      - master
