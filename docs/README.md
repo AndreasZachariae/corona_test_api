@@ -1,5 +1,5 @@
 # corona_test_api
-[![coverage](https://gitlab.com/hs-karlsruhe/ss2021/zaan1018/corona_test_api/badges/master/coverage.svg)](https://hs-karlsruhe.gitlab.io/ss2021/zaan1018/corona_test_api/test/)
+[![coverage](https://gitlab.com/hs-karlsruhe.de/ss2021/zaan1018/corona_test_api/badges/master/coverage.svg)](https://hs-karlsruhe.gitlab.io/ss2021/zaan1018/corona_test_api/test/)
 [![markdownlint](https://hs-karlsruhe.gitlab.io/ss2021/zaan1018/corona_test_api/badges/markdownlint.svg)](https://gitlab.com/hs-karlsruhe.de/ss2021/zaan1018/corona_test_api/commits/master)
 [![yamllint](https://hs-karlsruhe.gitlab.io/ss2021/zaan1018/corona_test_api/badges/yamllint.svg)](https://gitlab.com/hs-karlsruhe.de/ss2021/zaan1018/corona_test_api/commits/master)
 [![pylint](https://hs-karlsruhe.gitlab.io/ss2021/zaan1018/corona_test_api/badges/pylint.svg)](https://hs-karlsruhe.gitlab.io/ss2021/zaan1018/corona_test_api/lint/)
@@ -61,7 +61,3 @@ conf.py -> html_theme: sphinx_rtd_theme
 conf.py -> extensions: "sphinx.ext.autodoc"
 
     sphinx-build . _build
-
-### Markdown
-    pip install --upgrade myst-parser
-    extensions = ['myst_parser']

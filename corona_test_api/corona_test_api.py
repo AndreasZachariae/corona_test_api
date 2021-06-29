@@ -90,7 +90,7 @@ def get_testresult():
     statistics.add_test(test_id, positive)
 
     # response code 201 created?
-    return ("new test registered" + str(test_id)+str(positive), 200)
+    return ("new test registered" + str(test_id)+str(positive), 201)
 
 
 @app.route("/statistics")
