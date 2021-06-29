@@ -17,6 +17,8 @@ Here is a short description of my project.
 
    api/*
 
+   README.md
+
 
 
 Indices and tables
