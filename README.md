@@ -10,16 +10,16 @@ API for recording Corona test results and providing a statistic.
 ## Golden rules of writing commit messages
 
 1. IN ENGLISH
-2. Separate the subject from the body with a blank line
-3. Your commit message should not contain any whitespace errors
-4. Remove unnecessary punctuation marks
-5. Do not end the subject line with a period
-6. Capitalize the subject line and each paragraph
-7. Use the imperative mood in the subject line
-8. Use the body to explain what changes you have made and why you made them.
-9. Do not assume the reviewer understands what the original problem was, ensure you add it.
-10. Do not think your code is self-explanatory
-11. Follow the commit convention defined by your team
+1. Separate the subject from the body with a blank line
+1. Your commit message should not contain any whitespace errors
+1. Remove unnecessary punctuation marks
+1. Do not end the subject line with a period
+1. Capitalize the subject line and each paragraph
+1. Use the imperative mood in the subject line
+1. Use the body to explain what changes you have made and why you made them.
+1. Do not assume the reviewer understands what the original problem was, ensure you add it.
+1. Do not think your code is self-explanatory
+1. Follow the commit convention defined by your team
 
 ## Create virtual env
 ```bash
