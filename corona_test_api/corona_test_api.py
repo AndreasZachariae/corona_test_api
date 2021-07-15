@@ -9,17 +9,9 @@ Todo:
 from apispec import APISpec
 from apispec.ext.marshmallow import MarshmallowPlugin
 from apispec_webframeworks.flask import FlaskPlugin
-from marshmallow import Schema, fields
 from flask import Flask, abort, request
 from flask_cors import CORS  # neccessary for swagger editor to work
 from corona_test_api.statistics import Statistics
-
-
-class StatisticsShema(Schema):
-    """Marshmallow schema for statistics type
-    """
-    numberOfTests = fields.Int()
-
 
 spec = APISpec(
     title="Corona Test API",
@@ -55,8 +47,6 @@ spec = APISpec(
     plugins=[FlaskPlugin(), MarshmallowPlugin()],
 )
 
-spec.components.schema("Statistics", schema=StatisticsShema)
-
 app = Flask(__name__)
 
 cors = CORS(app)
@@ -89,7 +79,6 @@ def get_testresult():
 
     statistics.add_test(test_id, positive)
 
-    # response code 201 created?
     return ("new test registered" + str(test_id)+str(positive), 201)
 
 
