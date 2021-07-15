@@ -28,10 +28,8 @@ def test_get_statistics():
 
         json_object = json.loads(response.data.decode())
         assert json_object == {
-            'numberOfTests': 1,
+            "numberOfTests": 1,
             "numberOfNegativeTests": 0,
             "numberOfPositiveTests": 1,
             "numberOfUniquePersons": 1
         }
-
-# test statistics separate?
