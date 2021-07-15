@@ -10,6 +10,7 @@ apispec-webframeworks = "*"
 marshmallow = "*"
 pyyaml = "*"
 flask-cors = "*"
+yamllint = "*"
 
 [dev-packages]
 pytest = "*"

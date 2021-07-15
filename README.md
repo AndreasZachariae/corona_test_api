@@ -1,67 +1,177 @@
 # corona_test_api
 [![coverage](https://gitlab.com/hs-karlsruhe/ss2021/zaan1018/corona_test_api/badges/master/coverage.svg)](https://hs-karlsruhe.gitlab.io/ss2021/zaan1018/corona_test_api/test/)
-[![markdownlint](https://hs-karlsruhe.gitlab.io/ss2021/zaan1018/corona_test_api/badges/markdownlint.svg)](https://gitlab.com/hs-karlsruhe.de/ss2021/zaan1018/corona_test_api/commits/master)
-[![yamllint](https://hs-karlsruhe.gitlab.io/ss2021/zaan1018/corona_test_api/badges/yamllint.svg)](https://gitlab.com/hs-karlsruhe.de/ss2021/zaan1018/corona_test_api/commits/master)
+[![markdownlint](https://hs-karlsruhe.gitlab.io/ss2021/zaan1018/corona_test_api/badges/markdownlint.svg)](https://gitlab.com/hs-karlsruhe/ss2021/zaan1018/corona_test_api/commits/master)
+[![yamllint](https://hs-karlsruhe.gitlab.io/ss2021/zaan1018/corona_test_api/badges/yamllint.svg)](https://gitlab.com/hs-karlsruhe/ss2021/zaan1018/corona_test_api/commits/master)
 [![pylint](https://hs-karlsruhe.gitlab.io/ss2021/zaan1018/corona_test_api/badges/pylint.svg)](https://hs-karlsruhe.gitlab.io/ss2021/zaan1018/corona_test_api/lint/)
-[![dockerlint](https://hs-karlsruhe.gitlab.io/ss2021/zaan1018/corona_test_api/badges/dockerlint.svg)](https://gitlab.com/hs-karlsruhe.de/ss2021/zaan1018/corona_test_api/commits/master)
 
-API for recording Corona test results and providing a statistic.
+API for recording Corona test results and providing statistics.
 
-## Golden rules of writing commit messages
+This API provides one route for adding new test results to the database and one route to get statistics for all registered tests.
 
-0. IN ENGLISH
-1. Separate the subject from the body with a blank line
-2. Your commit message should not contain any whitespace errors
-3. Remove unnecessary punctuation marks
-4. Do not end the subject line with a period
-5. Capitalize the subject line and each paragraph
-6. Use the imperative mood in the subject line
-7. Use the body to explain what changes you have made and why you made them.
-8. Do not assume the reviewer understands what the original problem was, ensure you add it.
-9. Do not think your code is self-explanatory
-10. Follow the commit convention defined by your team
+- `/testresult` with query parameter `id` and `postive`
+- `/statistics` returns json data
+    ```json
+    {
+        "numberOfTests": int,
+        "numberOfNegativeTests": int,
+        "numberOfPositiveTests": int,
+        "numberOfUniquePersons": int
+    }
+    ```
 
-## Create virtual env
+## Prerequisites
 
-    pipenv --version
+1. Install Python 3 [Download](https://www.python.org/downloads/)
+
+1. Install Git [Instructions](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git)
+
+1. Install virtual environment pipenv
+    ```bash
+    pip install pipenv
+    ```
+
+## How to setup
+
+1. Clone this project repository 
+    ```bash
+    git clone https://gitlab.com/hs-karlsruhe/ss2021/zaan1018/corona_test_api.git
+    ```
+1. Change into project directory
+    ```bash
+    cd corona_test_api
+    ```
+1. Create virtual environment with pipenv
+    ```bash
     pipenv --python 3
+    ```
+1. Install runtime dependecies from Pipfile
+    ```bash
+    pipenv install
+    ```
+
+## How to run
+
+1. Activate pipenv in GitBash
+    ```bash
     pipenv shell
-    pipenv install <name-of-package>
-    pipenv install --dev
+    ```
 
-## Linting and Testing
+1. Give path to flask app
+    ```bash
+    export FLASK_APP=corona_test_api/corona_test_api.py
+    ```
 
-    pylint corona_test_api
-    pytest
-    pytest --cov corona_test_api
-
-## Webservice
-
-    pipenv shell
-    $env:FLASK_APP = ".\corona_test_api\corona_test_api.py" #Powershell
-    export FLASK_APP=corona_test_api/corona_test_api.py #GitBash
-    export FLASK_ENV=development
+1. Start flask webserver 
+    ```bash
     flask run
-    curl http://127.0.0.1:5000/
+    ```
 
-    curl http://127.0.0.1:5000/testresult?id=1&positive=0
+## How to use
 
-    curl http://127.0.0.1:5000/statistics
+The specification of the API according to OpenAPI (Swagger) OA3 can be found here:
+```bash
+openapi/specification.yaml
+```
 
-## Docs
+- path `/testresult` with GET-method
+    ```yaml
+    summary: "Register a new test result"
+    parameters:
+        - in: "query"
+        name: "id"
+        description: "Unique ID of a person."
+        required: true
+        schema:
+            type: "string"
+        - in: "query"
+        name: "positive"
+        description: "Whether test result is positive or negative."
+        required: true
+        schema:
+            type: "boolean"
+    ```
 
-    pipenv install --dev sphinx
-    pipenv install --dev sphinx_rtd_theme
+- path `/statistics` with GET-method
+    ```yaml
+    summary: "Test result statistics for all registered test results"
+    responses:
+        "200":
+          description: "Successful operation"
+          content:
+            application/json:
+              schema:
+                properties:
+                    numberOfTests:
+                        type: "integer"
+                        format: "int64"
+                        description: "Total number of tests"
+                    numberOfNegativeTests:
+                        type: "integer"
+                        format: "int64"
+                        description: "Total number of negative tests"
+                    numberOfPositiveTests:
+                        type: "integer"
+                        format: "int64"
+                        description: "Total number of positive tests"
+                    numberOfUniquePersons:
+                        type: "integer"
+                        format: "int64"
+                        description: "Total"
+    ```
 
-    cd ./docs
-    sphinx-quickstart
 
-conf.py -> html_theme: sphinx_rtd_theme
+Use `curl` for testing
+```bash
+curl http://localhost:5000/testresult?id=1&positive=0
+curl http://localhost:5000/statistics
+```
 
-conf.py -> extensions: "sphinx.ext.autodoc"
+## How to contribute
 
-    sphinx-build . _build
+### Follow the git-workflow
 
-### Markdown
-    pip install --upgrade myst-parser
-    extensions = ['myst_parser']
+1. Create new local feature branch
+    ```bash
+    git checkout -b new-feature
+    ```
+1. Do your commits
+    ```bash
+    git add --all
+    git commit -m "message"
+    ```
+1. Push feature branch to remote repo
+    ```bash
+    git push --set-upstream origin new-feature
+    ```
+1. Create new pull request online in GitLab
+
+### Golden rules of writing commit messages
+
+1. IN ENGLISH
+1. Separate the subject from the body with a blank line
+1. Your commit message should not contain any whitespace errors
+1. Remove unnecessary punctuation marks
+1. Do not end the subject line with a period
+1. Capitalize the subject line and each paragraph
+1. Use the imperative mood in the subject line
+1. Use the body to explain what changes you have made and why you made them.
+1. Do not assume the reviewer understands what the original problem was, ensure you add it.
+1. Do not think your code is self-explanatory
+1. Follow the commit convention defined by your team
+
+
+### Linting and testing
+```bash
+pylint corona_test_api
+pytest
+pytest --cov corona_test_api
+yamllint .
+```
+
+## ToDo
+
+- [ ] Evaluate True/false from input string 
+- [ ] Add API specification
+- [x] Finish dev docs
+- [ ] Database integration
+- [ ] Add date to input data

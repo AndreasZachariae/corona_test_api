@@ -1,0 +1,76 @@
+---
+openapi: 3.0.0
+info:
+  description: >
+    "API for recording Corona test results and providing a statistic."
+  version: "1.0.0"
+  title: "Corona Test API"
+servers:
+  - url: http://localhost:8080/
+tags:
+  - name: "testresult"
+    description: "Corona test results"
+  - name: "statistics"
+    description: "Corona tests statistics"
+paths:
+  /testresult:
+    get:
+      tags:
+        - "testresult"
+      summary: "Register a new test result"
+      operationId: "addTestResult"
+      parameters:
+        - in: "query"
+          name: "id"
+          description: "Unique ID of a person."
+          required: true
+          schema:
+            type: "string"
+        - in: "query"
+          name: "positive"
+          description: "Whether test result is positive or negative."
+          required: true
+          schema:
+            type: "boolean"
+      responses:
+        "400":
+          description: "Given parameters are not valid or missing."
+  /statistics:
+    get:
+      tags:
+        - "statistics"
+      summary: "Test result statistics for all registered test results"
+      operationId: "getStatistics"
+      responses:
+        "200":
+          description: "Successful operation"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Statistics"
+components:
+  schemas:
+    Statistics:
+      type: "object"
+      required:
+        - "numberOfTests"
+        - "numberOfNegativeTests"
+        - "numberOfPositiveTests"
+        - "numberOfUniquePersons"
+      properties:
+        numberOfTests:
+          type: "integer"
+          format: "int64"
+          description: "Total number of tests"
+        numberOfNegativeTests:
+          type: "integer"
+          format: "int64"
+          description: "Total number of negative tests"
+        numberOfPositiveTests:
+          type: "integer"
+          format: "int64"
+          description: "Total number of positive tests"
+        numberOfUniquePersons:
+          type: "integer"
+          format: "int64"
+          description: "Total"
