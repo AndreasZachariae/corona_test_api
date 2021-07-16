@@ -13,14 +13,14 @@ This API provides one route for adding new test results to the database and one 
 
 - `/statistics` returns json data
 
-    ```json
+  ```json
     {
         "numberOfTests": "int",
         "numberOfNegativeTests": "int",
         "numberOfPositiveTests": "int",
         "numberOfUniquePersons": "int"
     }
-    ```
+  ```
 
 ## Prerequisites
 
@@ -30,55 +30,55 @@ This API provides one route for adding new test results to the database and one 
 
 1. Install virtual environment pipenv
 
-    ```bash
-    pip install pipenv
-    ```
+   ```bash
+   pip install pipenv
+   ```
 
 ## How to setup
 
 1. Clone this project repository
 
-    ```bash
-    git clone https://gitlab.com/hs-karlsruhe/ss2021/zaan1018/corona_test_api.git
-    ```
+   ```bash
+   git clone https://gitlab.com/hs-karlsruhe/ss2021/zaan1018/corona_test_api.git
+   ```
 
 1. Change into project directory
 
-    ```bash
-    cd corona_test_api
-    ```
+   ```bash
+   cd corona_test_api
+   ```
 
 1. Create virtual environment with pipenv
 
-    ```bash
-    pipenv --python 3
-    ```
+   ```bash
+   pipenv --python 3
+   ```
 
 1. Install runtime dependecies from Pipfile
 
-    ```bash
-    pipenv install
-    ```
+   ```bash
+   pipenv install
+   ```
 
 ## How to run
 
 1. Activate pipenv in GitBash
 
-    ```bash
-    pipenv shell
-    ```
+   ```bash
+   pipenv shell
+   ```
 
 1. Give path to flask app
 
-    ```bash
-    export FLASK_APP=corona_test_api/corona_test_api.py
-    ```
+   ```bash
+   export FLASK_APP=corona_test_api/corona_test_api.py
+   ```
 
 1. Start flask webserver
 
-    ```bash
-    flask run
-    ```
+   ```bash
+   flask run
+   ```
 
 ## How to use
 
@@ -88,7 +88,7 @@ The specification of the API according to OpenAPI (Swagger) OA3 can be found her
 openapi/specification.yaml
 ```
 
-- path `/testresult` with GET-method
+  - path `/testresult` with GET-method
 
     ```yaml
     summary: "Register a new test result"
@@ -107,7 +107,7 @@ openapi/specification.yaml
             type: "boolean"
     ```
 
-- path `/statistics` with GET-method
+  - path `/statistics` with GET-method
 
     ```yaml
     summary: "Test result statistics for all registered test results"
@@ -147,26 +147,26 @@ curl http://localhost:5000/statistics
 
 ### Follow the git-workflow
 
-1. Create new local feature branch
+  1. Create new local feature branch
 
     ```bash
     git checkout -b new-feature
     ```
 
-1. Do your commits
+  1. Do your commits
 
     ```bash
     git add --all
     git commit -m "message"
     ```
 
-1. Push feature branch to remote repo
+  1. Push feature branch to remote repo
 
     ```bash
     git push --set-upstream origin new-feature
     ```
 
-1. Create new pull request online in GitLab
+  1. Create new pull request online in GitLab
 
 ### Golden rules of writing commit messages
 
