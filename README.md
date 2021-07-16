@@ -9,18 +9,17 @@ API for recording Corona test results and providing statistics.
 
 This API provides one route for adding new test results to the database and one route to get statistics for all registered tests.
 
-- `/testresult` with query parameter `id` and `postive`
+  - `/testresult` with query parameter `id` and `postive`
+  - `/statistics` returns json data
 
-- `/statistics` returns json data
-
-```json
+  ```json
   {
       "numberOfTests": "int",
       "numberOfNegativeTests": "int",
       "numberOfPositiveTests": "int",
       "numberOfUniquePersons": "int"
   }
-```
+  ```
 
 ## Prerequisites
 
