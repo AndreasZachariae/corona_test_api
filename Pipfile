@@ -7,10 +7,8 @@ name = "pypi"
 flask = "*"
 apispec = {extras = ["yaml"], version = "*"}
 apispec-webframeworks = "*"
-marshmallow = "*"
 pyyaml = "*"
 flask-cors = "*"
-yamllint = "*"
 
 [dev-packages]
 pytest = "*"
@@ -18,6 +16,7 @@ pytest-cov = "*"
 pylint = "*"
 sphinx = "*"
 sphinx-rtd-theme = "*"
+yamllint = "*"
 
 [requires]
 python_version = "3.9"
