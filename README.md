@@ -9,25 +9,23 @@ API for recording Corona test results and providing statistics.
 
 This API provides one route for adding new test results to the database and one route to get statistics for all registered tests.
 
-  - `/testresult` with query parameter `id` and `postive`
+- `/testresult` with query parameter `id` and `postive`
 
-  - `/statistics` returns json data
+- `/statistics` returns json data
 
-  ```json
-    {
-        "numberOfTests": "int",
-        "numberOfNegativeTests": "int",
-        "numberOfPositiveTests": "int",
-        "numberOfUniquePersons": "int"
-    }
-  ```
+```json
+  {
+      "numberOfTests": "int",
+      "numberOfNegativeTests": "int",
+      "numberOfPositiveTests": "int",
+      "numberOfUniquePersons": "int"
+  }
+```
 
 ## Prerequisites
 
  1. Install Python 3 [Download](https://www.python.org/downloads/)
-
  1. Install Git [Instructions](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git)
-
  1. Install virtual environment pipenv
 
    ```bash
