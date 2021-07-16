@@ -9,9 +9,9 @@ API for recording Corona test results and providing statistics.
 
 This API provides one route for adding new test results to the database and one route to get statistics for all registered tests.
 
-- `/testresult` with query parameter `id` and `postive`
+  - `/testresult` with query parameter `id` and `postive`
 
-- `/statistics` returns json data
+  - `/statistics` returns json data
 
   ```json
     {
@@ -24,11 +24,11 @@ This API provides one route for adding new test results to the database and one 
 
 ## Prerequisites
 
-1. Install Python 3 [Download](https://www.python.org/downloads/)
+ 1. Install Python 3 [Download](https://www.python.org/downloads/)
 
-1. Install Git [Instructions](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git)
+ 1. Install Git [Instructions](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git)
 
-1. Install virtual environment pipenv
+ 1. Install virtual environment pipenv
 
    ```bash
    pip install pipenv
@@ -36,25 +36,25 @@ This API provides one route for adding new test results to the database and one 
 
 ## How to setup
 
-1. Clone this project repository
+ 1. Clone this project repository
 
    ```bash
    git clone https://gitlab.com/hs-karlsruhe/ss2021/zaan1018/corona_test_api.git
    ```
 
-1. Change into project directory
+ 1. Change into project directory
 
    ```bash
    cd corona_test_api
    ```
 
-1. Create virtual environment with pipenv
+ 1. Create virtual environment with pipenv
 
    ```bash
    pipenv --python 3
    ```
 
-1. Install runtime dependecies from Pipfile
+ 1. Install runtime dependecies from Pipfile
 
    ```bash
    pipenv install
@@ -62,19 +62,19 @@ This API provides one route for adding new test results to the database and one 
 
 ## How to run
 
-1. Activate pipenv in GitBash
+ 1. Activate pipenv in GitBash
 
    ```bash
    pipenv shell
    ```
 
-1. Give path to flask app
+ 1. Give path to flask app
 
    ```bash
    export FLASK_APP=corona_test_api/corona_test_api.py
    ```
 
-1. Start flask webserver
+ 1. Start flask webserver
 
    ```bash
    flask run
@@ -88,53 +88,53 @@ The specification of the API according to OpenAPI (Swagger) OA3 can be found her
 openapi/specification.yaml
 ```
 
-  - path `/testresult` with GET-method
+- path `/testresult` with GET-method
 
-    ```yaml
-    summary: "Register a new test result"
-    parameters:
-        - in: "query"
-        name: "id"
-        description: "Unique ID of a person."
-        required: true
-        schema:
-            type: "string"
-        - in: "query"
-        name: "positive"
-        description: "Whether test result is positive or negative."
-        required: true
-        schema:
-            type: "boolean"
-    ```
+```yaml
+summary: "Register a new test result"
+parameters:
+    - in: "query"
+    name: "id"
+    description: "Unique ID of a person."
+    required: true
+    schema:
+        type: "string"
+    - in: "query"
+    name: "positive"
+    description: "Whether test result is positive or negative."
+    required: true
+    schema:
+        type: "boolean"
+```
 
-  - path `/statistics` with GET-method
+- path `/statistics` with GET-method
 
-    ```yaml
-    summary: "Test result statistics for all registered test results"
-    responses:
-        "200":
-          description: "Successful operation"
-          content:
-            application/json:
-              schema:
-                properties:
-                    numberOfTests:
-                        type: "integer"
-                        format: "int64"
-                        description: "Total number of tests"
-                    numberOfNegativeTests:
-                        type: "integer"
-                        format: "int64"
-                        description: "Total number of negative tests"
-                    numberOfPositiveTests:
-                        type: "integer"
-                        format: "int64"
-                        description: "Total number of positive tests"
-                    numberOfUniquePersons:
-                        type: "integer"
-                        format: "int64"
-                        description: "Total"
-    ```
+```yaml
+summary: "Test result statistics for all registered test results"
+responses:
+    "200":
+      description: "Successful operation"
+      content:
+        application/json:
+          schema:
+            properties:
+                numberOfTests:
+                    type: "integer"
+                    format: "int64"
+                    description: "Total number of tests"
+                numberOfNegativeTests:
+                    type: "integer"
+                    format: "int64"
+                    description: "Total number of negative tests"
+                numberOfPositiveTests:
+                    type: "integer"
+                    format: "int64"
+                    description: "Total number of positive tests"
+                numberOfUniquePersons:
+                    type: "integer"
+                    format: "int64"
+                    description: "Total"
+```
 
 Use `curl` for testing
 
